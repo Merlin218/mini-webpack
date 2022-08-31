@@ -96,7 +96,7 @@ function TreeToQueue(moduleTree) {
  */
 function createModuleWrapper(codeContent) {
   // 运行时，三个参数传入的就是targetModule.exports, webpack_require, targetModule
-  return `(exports, require, module) => {
+  return `function(exports, require, module) {
     // 比如：该代码中包含module.export = xxx,那么在运行时其实是 targetModule.exports = xxx;
     // 这样就可以拿到该模块执行的结果，然后缓存起来。
     ${codeContent}
